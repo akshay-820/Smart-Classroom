@@ -1,1 +1,32 @@
-.venv/
+# Virtual Environment
+venv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# MLflow Files
+mlruns/
+mlflow.db
+
+# VS Code
+.vscode/
+
+# System Files
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary Files
+temp/
+tmp/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment Variables
+.env
+
+# Node Modules
+node_modules/
