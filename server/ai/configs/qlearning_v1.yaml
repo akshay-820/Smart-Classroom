@@ -1,15 +1,12 @@
-learning_rate: 0.1
-discount_factor: 0.9
-epsilon_start: 1.0
-epsilon_min: 0.01
-epsilon_decay: 0.99
+run_name: qlearning_v1
 
-episodes: 1000
+learning_rate: 0.05
+discount_factor: 0.8
+epsilon: 1.0
+epsilon_decay: 0.95
+
+episodes: 500
 steps_per_episode: 50
 
-actions:
-    - 0
-    - 1
-    - 2
-    - 3
-    - 4
+policy_path: policies/policy_v1.pkl
+results_path: results/results_v1.csv
