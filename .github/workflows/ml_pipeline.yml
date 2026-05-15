@@ -26,7 +26,7 @@ jobs:
       - name: Run Evaluation
         run: |
           cd server/ai
-          python evaluate.py
+          python evalualte.py
 
       - name: Generate Plots
         run: |
