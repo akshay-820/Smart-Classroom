@@ -1,4 +1,4 @@
 Method,Average Reward
-Baseline,153.72
-RL_V1,183.58
-RL_V2,188.56
+Baseline,114.82
+RL_V1,147.28
+RL_V2,177.18
