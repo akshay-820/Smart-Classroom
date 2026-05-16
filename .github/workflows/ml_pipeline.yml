@@ -14,18 +14,21 @@ jobs:
               uses: actions/setup-python@v5
               with:
                   python-version: "3.13"
-              env:
-                  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # fixes the warning
 
             - name: Install Dependencies
               run: |
                   cd server/ai
                   pip install -r requirements.txt
 
-            - name: Run Training
+            - name: Train Model V1
               run: |
                   cd server/ai
-                  python train.py
+                  python train.py --config configs/qlearning_v1.yaml
+
+            - name: Train Model V2
+              run: |
+                  cd server/ai
+                  python train.py --config configs/qlearning_v2.yaml
 
             - name: Run Evaluation
               run: |
