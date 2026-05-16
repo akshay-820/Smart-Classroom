@@ -3,32 +3,43 @@ name: Smart Classroom MLOps Pipeline
 on: [push]
 
 jobs:
+    test-and-evaluate:
+        runs-on: ubuntu-latest
 
-  test-and-evaluate:
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
 
-    runs-on: ubuntu-latest
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.13"
 
-    steps:
+            - name: Install Dependencies
+              run: |
+                  cd server/ai
+                  pip install -r requirements.txt
 
-      - name: Checkout Code
-        uses: actions/checkout@v4
+            - name: Run Training
+              run: |
+                  cd server/ai
+                  python train.py
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
+            - name: Run Evaluation
+              run: |
+                  cd server/ai
+                  python evalualte.py
 
-      - name: Install Dependencies
-        run: |
-          cd server/ai
-          pip install -r requirements.txt
+            - name: Generate Plots
+              run: |
+                  cd server/ai
+                  python plot_results.py
 
-      - name: Run Evaluation
-        run: |
-          cd server/ai
-          python evalualte.py
-
-      - name: Generate Plots
-        run: |
-          cd server/ai
-          python plot_results.py
+            - name: Upload MLOps Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ml-outputs
+                  path: |
+                      server/ai/policies/*.pkl
+                      server/ai/results/*.csv
+                      server/ai/plots/*.png
